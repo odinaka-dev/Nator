@@ -29,7 +29,7 @@ const Footer = () => {
   ];
   return (
     <footer className="bg-black py-16">
-      <main className="main_footer grid grid-cols-4 gap-8">
+      <main className="main_footer grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="footer-one">
           <div className="logo text-white">
             <Link
@@ -91,7 +91,7 @@ const Footer = () => {
         <div className="footer-one">
           <h2 className="text-lg">NewsLetter SignUp</h2>
           <form action="" className="mt-2">
-            <div className="input_tag bg-zinc-900 pt-[2px]">
+            <div className="grid grid-cols-[80%_20%] space-x-2 input_tag bg-zinc-900 py-[2px]">
               <input
                 type="search"
                 className="appearance-none p-2 outline-none w-full"
@@ -100,7 +100,7 @@ const Footer = () => {
               <input
                 type="submit"
                 value="Send"
-                className="bg-[#3500FC] hover:bg-blue-900 transition-colors duration-300 p-[4px] px-4 border-0  text-white w-full cursor-pointer"
+                className="bg-[#3500FC] hover:bg-blue-900 transition-colors duration-300 p-[4px] border-0  text-white w-full cursor-pointer"
               />
             </div>
           </form>
