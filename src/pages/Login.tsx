@@ -1,9 +1,8 @@
-import Image7 from "../assets/hand-drawn-translation-services-illustration_52683-154821.jpg";
-
+import Image7 from "../assets/log.avif";
 const login = () => {
   return (
-    <section className="h-screen flex space-x-8 justify-center items-center py-8">
-      <div>
+    <section className="h-screen flex space-x-0 justify-center items-center py-8 bg-black">
+      <div className="bg-[#0d0d0d] py-6 px-4 rounded-sm">
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator
         </h1>
@@ -34,7 +33,7 @@ const login = () => {
           </form>
         </div>
       </div>
-      <div className="w-250 relative z-[-9999]">
+      <div className="relative z-[1]">
         <img src={Image7} alt="" className="w-full" />
       </div>
     </section>

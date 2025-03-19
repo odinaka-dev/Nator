@@ -11,7 +11,7 @@ const Header = () => {
       href: "/",
     },
     {
-      label: "Translate",
+      label: "Chat Nator",
       href: "/translate",
     },
     {

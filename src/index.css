@@ -20,10 +20,13 @@ body {
 }
 /* the background styles for the main banner */
 .banner_main {
-  padding: 150px 0px;
-  margin-bottom: 80px;
-  background: url("./assets/ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.webp");
+  padding: 100px 0px;
+  padding-bottom: 0px;
+  margin-bottom: 50px;
+  background: rgb(0, 0, 0, 0.8)
+    url("./assets/ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.webp");
   background-position: right;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-blend-mode: darken;
 }

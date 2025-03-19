@@ -1,9 +1,9 @@
-import Image7 from "../assets/hand-drawn-translation-services-illustration_52683-154821.jpg";
+import Image7 from "../assets/sign.avif";
 
 const Signup = () => {
   return (
-    <section className="h-screen flex space-x-6  justify-center items-center">
-      <div>
+    <section className="bg-black h-screen flex space-x-0  justify-center items-center">
+      <div className="bg-[#0d0d0d] py-6 px-4 rounded-sm">
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator
         </h1>
@@ -33,7 +33,7 @@ const Signup = () => {
             />
             <input
               type="password"
-              placeholder="confir your Password"
+              placeholder="confirm your Password"
               className="outline-none text-[14px] p-2 w-full rounded-lg cursor-pointer bg-zinc-900"
             />
             <input
@@ -44,7 +44,7 @@ const Signup = () => {
           </form>
         </div>
       </div>
-      <div className="w-250 relative z-[-9999]">
+      <div className="w-150 relative z-[10]">
         <img src={Image7} alt="" className="w-full" />
       </div>
     </section>
