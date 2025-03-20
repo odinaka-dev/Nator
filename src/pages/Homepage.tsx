@@ -20,6 +20,11 @@ import Image4 from "../assets/portrait-surreal-sea-creature_23-2151625941.jpg";
 import Image5 from "../assets/robot-handshake-human-background-futuristic-digital-age_53876-129770.webp";
 import Image6 from "../assets/there-is-digital-art-image-man-with-glasses-generative-ai_925897-90641.webp";
 import Image7 from "../assets/headphones-used-learning-new-language_23-2148293475.webp";
+import { FcCancel } from "react-icons/fc";
+import { GiArtificialIntelligence, GiArtilleryShell } from "react-icons/gi";
+import { TiCancel } from "react-icons/ti";
+import { CgAddR } from "react-icons/cg";
+import { BiMinusCircle } from "react-icons/bi";
 const Homepage = () => {
   return (
     <React.Fragment>
@@ -38,11 +43,11 @@ const Homepage = () => {
 // main banner
 const BannerComponent = () => {
   return (
-    <section className="banner_main backdrop-brightness-75 text-center">
+    <section className="banner_main backdrop-brightness-75 text-center relative">
       <div className="max-w-[80%] mx-auto">
         <div className="">
           <h1 className="text-[#00fcdb] capitalize text-xl">Nator's world</h1>
-          <h1 className="text-6xl text-balance font-semibold bg-gradient-to-r from-[#a1fff2] to-[#00727a] bg-clip-text text-transparent">
+          <h1 className="font-mono text-6xl text-balance font-semibold bg-gradient-to-r from-[#a1fff2] to-[#00727a] bg-clip-text text-transparent">
             Unlock The amazing power of{" "}
             <span className="">Translational AI.</span>
           </h1>
@@ -53,38 +58,18 @@ const BannerComponent = () => {
             with the AI. Check out Nator today.
           </p>
           <div className="">
-            <button className="bg-[#3500FC] font-bold text-[#a8acb7] text-sm mt-6 py-2 px-8 rounded-sm cursor-pointer hover:bg-blue-800 transition-colors duration-300">
+            <button className="bg-gradient-to-r from-[#395c63] to-[#00727a] font-bold text-white text-lg mt-6 py-2 px-8 rounded-sm cursor-pointer hover:bg-blue-800 transition-colors duration-300">
               <Link to={"/signup"}>Get started</Link>
             </button>
           </div>
         </div>
-      </div>
-      <div>
-        <svg
-          width="100%"
-          height="100%"
-          id="svg"
-          viewBox="0 0 1440 390"
-          xmlns="http://www.w3.org/2000/svg"
-          className="transition duration-300 ease-in-out delay-150"
-        >
-          <path
-            d="M 0,400 L 0,100 C 92.60714285714286,104.14285714285714 185.21428571428572,108.28571428571429 317,105 C 448.7857142857143,101.71428571428571 619.75,90.99999999999999 760,98 C 900.25,105.00000000000001 1009.7857142857142,129.71428571428572 1118,133 C 1226.2142857142858,136.28571428571428 1333.107142857143,118.14285714285714 1440,100 L 1440,400 L 0,400 Z"
-            stroke="none"
-            stroke-width="0"
-            fill="#00fcdb"
-            fill-opacity="0.53"
-            className="transition-all duration-300 ease-in-out delay-150 path-0"
-          ></path>
-          <path
-            d="M 0,400 L 0,233 C 120.57142857142858,229.32142857142856 241.14285714285717,225.64285714285714 371,217 C 500.85714285714283,208.35714285714286 639.9999999999999,194.75 764,188 C 888.0000000000001,181.25 996.8571428571429,181.3571428571429 1107,190 C 1217.142857142857,198.6428571428571 1328.5714285714284,215.82142857142856 1440,233 L 1440,400 L 0,400 Z"
-            stroke="none"
-            stroke-width="0"
-            fill="#00fcdb"
-            fill-opacity="1"
-            className="transition-all duration-300 ease-in-out delay-150 path-1"
-          ></path>
-        </svg>
+        <div className="text-emerald-400 text-5xl font-normal">
+          <TiCancel className="animate-spin absolute top-30" />
+          <TiCancel className="animate-spin absolute top-20 left-300" />
+          <BiMinusCircle className="animate-spin absolute top-80 left-50" />
+          <CgAddR className="animate-spin absolute top-60 left-250" />
+          <BiMinusCircle className="animate-spin absolute top-100 left-290" />
+        </div>
       </div>
     </section>
   );
@@ -224,20 +209,20 @@ const PricingPlans = () => {
   const Pricing = [
     {
       planTag: "Free Plan",
-      subTag: "Perfect for private All individuals",
+      subTag: "Perfect for any individual",
       Price: 0,
       Prompts: "700",
     },
     {
       planTag: "Business Plan",
       subTag: "Perfect for private individuals/students",
-      Price: 8,
+      Price: 2,
       Prompts: "10,000",
     },
     {
       planTag: "Premium Plan",
       subTag: "Perfect for private Companies/individuals",
-      Price: 16,
+      Price: 5,
       Prompts: "100,000",
     },
   ];
