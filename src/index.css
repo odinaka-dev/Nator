@@ -5,6 +5,9 @@
   --background: #0d0d0d;
   --text-color: #fdfdfd;
 }
+* {
+  outline: none;
+}
 
 body {
   font-family: "Inter" sans-serif;
