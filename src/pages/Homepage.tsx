@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { Link } from "react-router";
-import TestimonialImg from "../assets/cyborg-head-artificial-intelligence-3d-rendering_117023-721.jpg";
-//icon asset
+//icons Imports
 import { FaIoxhost } from "react-icons/fa";
 import { FaInstalod } from "react-icons/fa6";
 import { FaPaintbrush } from "react-icons/fa6";
@@ -12,7 +11,10 @@ import { FaStar } from "react-icons/fa";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { FaArrowRight } from "react-icons/fa6";
-// image asset
+import { TiCancel } from "react-icons/ti";
+import { CgAddR } from "react-icons/cg";
+import { BiMinusCircle } from "react-icons/bi";
+// image Imports
 import Image1 from "../assets/cyborg-head-artificial-intelligence-3d-rendering_117023-721.jpg";
 import Image2 from "../assets/ai-chip-artificial-intelligence-future-technology-innovation_53876-129780.webp";
 import Image3 from "../assets/futuristic-portrait-young-girl-with-high-tech_23-2151133516.webp";
@@ -20,13 +22,11 @@ import Image4 from "../assets/portrait-surreal-sea-creature_23-2151625941.jpg";
 import Image5 from "../assets/robot-handshake-human-background-futuristic-digital-age_53876-129770.webp";
 import Image6 from "../assets/there-is-digital-art-image-man-with-glasses-generative-ai_925897-90641.webp";
 import Image7 from "../assets/headphones-used-learning-new-language_23-2148293475.webp";
-import { FcCancel } from "react-icons/fc";
-import { GiArtificialIntelligence, GiArtilleryShell } from "react-icons/gi";
-import { TiCancel } from "react-icons/ti";
-import { CgAddR } from "react-icons/cg";
-import { BiMinusCircle } from "react-icons/bi";
+import TestimonialImg from "../assets/cyborg-head-artificial-intelligence-3d-rendering_117023-721.jpg";
+
 const Homepage = () => {
   return (
+    // the homepage components
     <React.Fragment>
       <BannerComponent />
       <WelcomeComponents />
