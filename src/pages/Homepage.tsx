@@ -432,7 +432,6 @@ const FrequentlyAskedQuestions = () => {
         "Nator has 3 main plans free, business and premium plans. Whatever purpose you aim to achieve choose the best plan that meets with it.",
     },
   ];
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section className="max-w-[80%] mx-auto my-16 mb-26 grid md:grid-cols-2 gap-8 items-center place-center">

@@ -47,7 +47,7 @@ const KnowledgeComponents = () => {
       setAnswer(response.choices[0].message.content || "No response.");
     } catch (error) {
       console.error(error);
-      setAnswer("come again pls Nator Ai");
+      setAnswer("come again pls Nator AI");
     }
   };
 
