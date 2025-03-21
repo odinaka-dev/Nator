@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FaRainbow } from "react-icons/fa";
 // import the main page signup
 import Intelligience from "../assets/ai-platform-unified-svgrepo-com.svg";
@@ -6,6 +5,7 @@ import Translation from "../assets/healthcare-nlp-api-svgrepo-com.svg";
 import Knowledge from "../assets/cloud-optimization-ai-fleet-routing-api-svgrepo-com.svg";
 import Creativity from "../assets/chip-intelligence-processor-svgrepo-com.svg";
 import { Link } from "react-router";
+
 const TranslateComponents = () => {
   return (
     <section className="h-[100vh] bg-black">
@@ -18,10 +18,6 @@ const TranslateComponents = () => {
 
 // the component of the search functionality
 const PromptComponent = () => {
-  // state that handles knowledge based API
-
-  // useEffect call for the ai - third party API.
-
   return (
     <section
       className="prompt max-w-[98%] sm:max-w-[80%] mx-auto flex flex-col
