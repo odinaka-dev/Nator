@@ -1,85 +1,80 @@
-import { useState } from "react";
-import { IoTimeOutline } from "react-icons/io5";
-import { IoSearchSharp } from "react-icons/io5";
-
-const knowledge = () => {
-  return (
-    <section className="h-screen bg-black">
-      <div className="max-w-[80%] mx-auto">
-        <KnowledgeComponents />
-      </div>
-    </section>
-  );
-};
+import { useState, useEffect } from "react";
+import { IoTimeOutline, IoSearchSharp } from "react-icons/io5";
 
 const KnowledgeComponents = () => {
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState("Loading...");
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+
+  // Load the external script dynamically
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://js.puter.com/v2/";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
 
   const knowledgeSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    if (!scriptLoaded) {
+      setAnswer("Nator AI is still loading, ask again");
+      return;
+    }
+
+    setAnswer("Processing...");
 
     try {
-      const response = await fetch(
-        "https://apis.omeife.ai/api/v1/user/developer/knowledge-assistance",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer sHof7Op2C2OjNv2J1Fd9fNTolvwjPkEF4iSO6EHETh5YMPEeio`,
-          },
-          body: JSON.stringify({ question }),
-        }
-      );
+      const chatResp = await window.puter.ai.chat(question, {
+        model: "o3-mini",
+        stream: true,
+      });
+      setAnswer(""); // Clear previous response
 
-      const data = await response.json();
-
-      if (response.ok || response.status === 200) {
-        setAnswer(data.data.text.response);
+      for await (const part of chatResp) {
+        setAnswer(
+          (prev) => prev + (part?.text?.replaceAll("\n", "<br>") || "")
+        );
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching AI response:", error);
+      setAnswer("An error occurred. Please try again.");
     }
   };
 
   const date = new Date();
   return (
-    <section className="pt-8">
+    <section className="pt-8 max-w-[80%] mx-auto">
       <div className="intelligence">
-        <div className="relative py-6 px-2 bg-zinc-900 w-full h-90 rounded-sm border border-gray-500">
+        <div className="relative py-6 px-2 bg-zinc-900 w-full h-96 rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-80 p-2">
-            <p className="break-words text-zinc-400">
-              {answer || "An error occurred please  make your request again"}
-            </p>
+            <p
+              className="break-words text-zinc-400"
+              dangerouslySetInnerHTML={{ __html: answer }}
+            />
           </div>
           <div className="text-zinc-400 absolute bottom-2 flex space-x-3">
-            <p className="text-sm">{date.toTimeString()}</p>{" "}
+            <p className="text-sm">{date.toTimeString()}</p>
             <div className="flex space-x-2 items-center">
               <IoTimeOutline />
-              <p className="text-sm"> 2 seconds sago</p>
+              <p className="text-sm">2 seconds ago</p>
             </div>
           </div>
         </div>
       </div>
       <form
-        action=""
         onSubmit={knowledgeSearch}
         className="mt-8 flex flex-col rounded-sm"
       >
         <input
           type="search"
-          name=""
           className="px-4 py-2 pb-6 rounded-md appearance-none bg-zinc-900"
-          placeholder="Ask and experience the endless possibilities of NatorAI"
+          placeholder="What would you love to know!"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
         <div className="flex justify-end">
-          <button
-            onClick={knowledgeSearch}
-            className="flex space-x-2 items-center text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-700 duration-300 transition-all"
-          >
+          <button className="flex space-x-2 items-center text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-700 duration-300 transition-all">
             <IoSearchSharp />
             <span className="block">Search</span>
           </button>
@@ -89,4 +84,4 @@ const KnowledgeComponents = () => {
   );
 };
 
-export default knowledge;
+export default KnowledgeComponents;
