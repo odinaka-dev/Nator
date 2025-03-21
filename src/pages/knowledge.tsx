@@ -13,7 +13,7 @@ const Knowledge = () => {
 
 const KnowledgeComponents = () => {
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("Loading response...");
+  const [answer, setAnswer] = useState("Loading...");
   const [loading, setLoading] = useState(false);
 
   // Get API Key securely from environment variables
