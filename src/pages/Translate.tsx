@@ -37,8 +37,8 @@ const Options = () => {
   };
 
   return (
-    <section className="bg-black h-screen p-4 py-8 text-white">
-      <div className="max-w-[90%] mx-auto grid grid-cols-2 gap-4 mt-8">
+    <section className="bg-black lg:h-screen p-4 py-8 text-white">
+      <div className="max-w-[98%] md:max-w-[90%] mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 gap-4 mt-8">
         <div className="flex flex-col gap-4">
           <textarea
             name=""

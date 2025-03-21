@@ -44,14 +44,14 @@ const Homepage = () => {
 const BannerComponent = () => {
   return (
     <section className="banner_main backdrop-brightness-75 text-center relative">
-      <div className="max-w-[80%] mx-auto">
+      <div className="max-w-[94%] md:max-w-[80%] mx-auto">
         <div className="">
           <h1 className="text-[#00fcdb] capitalize text-xl">Nator's world</h1>
-          <h1 className="font-mono text-6xl text-balance font-semibold bg-gradient-to-r from-[#a1fff2] to-[#00727a] bg-clip-text text-transparent">
+          <h1 className="font-mono text-4xl sm:text-4xl md:text-6xl text-balance font-semibold bg-gradient-to-r from-[#a1fff2] to-[#00727a] bg-clip-text text-transparent">
             Unlock The amazing power of{" "}
             <span className="">Translational AI.</span>
           </h1>
-          <p className="text-zinc-300 text-balance mt-4">
+          <p className="text-zinc-300 text-balance text-sm sm:text-base mt-4">
             Nator is a fully functional Artificial intelligence that handles and
             process translation of diverse languages to users. It has a
             different kind of prompt mechanism that users use to communicate
@@ -65,10 +65,10 @@ const BannerComponent = () => {
         </div>
         <div className="text-emerald-400 text-5xl font-normal">
           <TiCancel className="animate-spin absolute top-30" />
-          <TiCancel className="animate-spin absolute top-20 left-300" />
-          <BiMinusCircle className="animate-spin absolute top-80 left-50" />
-          <CgAddR className="animate-spin absolute top-60 left-250" />
-          <BiMinusCircle className="animate-spin absolute top-100 left-290" />
+          <TiCancel className="animate-spin absolute top-20 left-[90%] xl:left-300" />
+          <BiMinusCircle className="animate-spin absolute top-80 left-[10%] xl:left-50" />
+          <CgAddR className="animate-spin absolute top-60 left-[80%] xl:left-250" />
+          <BiMinusCircle className="animate-spin absolute top-100 left-[90%] xl:left-290" />
         </div>
       </div>
     </section>
@@ -101,12 +101,12 @@ const WelcomeComponents = () => {
     <section className="">
       <div className="components_text text-center">
         <h1 className="text-[#00fcdb] capitalize text-base">what Nator does</h1>
-        <p className="text-2xl text-balance max-w-[54%] mx-auto font-semibold">
+        <p className="text-xl md:text-2xl text-balance max-w-[90%] md:max-w-[54%] mx-auto font-semibold">
           Unleash the Potential of Nator Al Tools Crafted with Brilliance, Style
           and Quality that meets Translation and knowledge
         </p>
       </div>
-      <div className="image_gallery grid grid-cols-6 gap-4 my-6">
+      <div className="image_gallery grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 my-2 sm:my-6">
         {AllImages.map((allimg) => (
           <img
             src={allimg.src}
@@ -148,7 +148,7 @@ const ThirdComponents = () => {
     },
   ];
   return (
-    <section className="max-w-[80%] mx-auto my-16 mb-26">
+    <section className="max-w-[94%] md:max-w-[90%] lg:max-w-[80%] mx-auto my-16 mb-26">
       <div>
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator Features
@@ -157,7 +157,7 @@ const ThirdComponents = () => {
           AI-POWERED DESIGN
         </p>
       </div>
-      <div className="nator_features grid grid-cols-4 gap-2">
+      <div className="nator_features max-w-[80%] sm:max-w-[100%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
         {Features.map((featuring) => (
           <div
             className="bg-zinc-900 py-12 rounded-lg"
@@ -182,7 +182,7 @@ const ThirdComponents = () => {
 // third section
 const AboutComponents = () => {
   return (
-    <section className="my-16 max-w-[64%] mx-auto grid grid-cols-2 items-center gap-12">
+    <section className="my-16 max-w-[80%] lg:max-w-[64%] mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
       <div>
         <img src={Image6} alt="" className="w-full" />
       </div>
@@ -196,8 +196,8 @@ const AboutComponents = () => {
           Know all about Nator, it's vision, mission, goals, and every other
           things that makes up the body Nator.
         </p>
-        <button className="bg-[#3500FC] text-[#a8acb7] text-sm mt-6 py-2 px-8 rounded-sm cursor-pointer hover:bg-blue-800 transition-colors duration-300">
-          <Link to={"/"}>About Us</Link>
+        <button className="bg-[#3500FC] text-white text-base mt-6 py-2 px-8 rounded-sm cursor-pointer hover:bg-blue-800 transition-colors duration-300">
+          <Link to={"/translate"}>About Us</Link>
         </button>
       </div>
     </section>
@@ -237,7 +237,7 @@ const PricingPlans = () => {
           Pricing plans
         </p>
       </div>
-      <div className="plans flex justify-center space-x-8">
+      <div className="plans flex flex-col md:flex-row justify-center gap-8 md:space-x-8">
         {Pricing.map((pricings) => (
           <div className="text-center bg-zinc-900 p-6 rounded-sm border-2 border-[#3500FC]">
             <h3 className="text-2xl font-semibold text-[#00fcdb] mb-2">
@@ -347,7 +347,7 @@ const Testimonials = () => {
 
   return (
     <section className="bg-black">
-      <div className="max-w-[80%] mx-auto my-16 mb-26 py-16">
+      <div className="max-w-[100%] sm:max-w-[94%] md:max-w-[90%] lg:max-w-[80%] mx-auto my-16 mb-26 py-16">
         <div>
           <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
             what our users are saying
@@ -363,7 +363,7 @@ const Testimonials = () => {
           >
             <GrFormPrevious />
           </div>
-          <main className="text-[#a8acb7] testimonials_clients grid grid-cols-3 space-x-4">
+          <main className="text-[#a8acb7] testimonials_clients grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:space-x-4">
             {userTestimonials
               .slice(index * itemsPerPage, (index + 1) * itemsPerPage)
               .map((clientels) => (
@@ -435,7 +435,7 @@ const FrequentlyAskedQuestions = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="max-w-[80%] mx-auto my-16 mb-26 grid grid-cols-2 gap-8 items-center place-center">
+    <section className="max-w-[80%] mx-auto my-16 mb-26 grid md:grid-cols-2 gap-8 items-center place-center">
       <div>
         <div>
           <h1 className="text-[#00fcdb] uppercase text-sm my-2">Faq</h1>
@@ -457,7 +457,7 @@ const FrequentlyAskedQuestions = () => {
           ))}
         </section>
       </div>
-      <div>
+      <div className="hidden md:grid">
         <img src={Image7} alt="" />
       </div>
     </section>

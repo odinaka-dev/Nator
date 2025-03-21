@@ -25,7 +25,7 @@ const PromptComponent = () => {
 
   return (
     <section
-      className="prompt max-w-[80%] mx-auto flex flex-col
+      className="prompt max-w-[98%] sm:max-w-[80%] mx-auto flex flex-col
      gap-2"
     >
       <div className="">
@@ -70,7 +70,7 @@ const ChooseComponents = () => {
 
   return (
     <section className="">
-      <div className="select_options grid grid-cols-4 gap-16">
+      <div className="select_options grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-16">
         {Options.map((multi) => (
           <Link to={`/${multi.href}`}>
             <div

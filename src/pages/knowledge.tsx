@@ -44,7 +44,7 @@ const KnowledgeComponents = () => {
 
   const date = new Date();
   return (
-    <section className="pt-8 max-w-[80%] mx-auto">
+    <section className="pt-8 max-w-[94%] md:max-w-[80%] mx-auto">
       <div className="intelligence">
         <div className="relative py-6 px-2 bg-zinc-900 w-full h-96 rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-80 p-2">
@@ -54,7 +54,7 @@ const KnowledgeComponents = () => {
             />
           </div>
           <div className="text-zinc-400 absolute bottom-2 flex space-x-3">
-            <p className="text-sm">{date.toTimeString()}</p>
+            <p className="text-sm hidden sm:flex">{date.toTimeString()}</p>
             <div className="flex space-x-2 items-center">
               <IoTimeOutline />
               <p className="text-sm">2 seconds ago</p>
