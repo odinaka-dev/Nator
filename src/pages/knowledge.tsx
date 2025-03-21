@@ -1,82 +1,95 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IoTimeOutline, IoSearchSharp } from "react-icons/io5";
+import OpenAI from "openai";
+
+const Knowledge = () => {
+  return (
+    <section className="h-screen bg-black">
+      <div className="max-w-[92%] md:max-w-[80%] mx-auto">
+        <KnowledgeComponents />
+      </div>
+    </section>
+  );
+};
 
 const KnowledgeComponents = () => {
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("Loading...");
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-
-  // Load the external script dynamically
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://js.puter.com/v2/";
-    script.async = true;
-    script.onload = () => setScriptLoaded(true);
-    document.body.appendChild(script);
-  }, []);
+  const [answer, setAnswer] = useState("");
 
   const knowledgeSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!scriptLoaded) {
-      setAnswer("Nator AI is still loading, ask again");
+
+    const apiKey = import.meta.env.VITE_GITHUB_TOKEN;
+
+    if (!apiKey) {
+      setAnswer("API key is missing. can't communicate with Nator");
       return;
     }
 
-    setAnswer("Processing...");
-
     try {
-      const chatResp = await window.puter.ai.chat(question, {
-        model: "o3-mini",
-        stream: true,
+      const openai = new OpenAI({
+        baseURL: "https://models.inference.ai.azure.com",
+        apiKey,
+        dangerouslyAllowBrowser: true,
       });
-      setAnswer(""); // Clear previous response
 
-      for await (const part of chatResp) {
-        setAnswer(
-          (prev) => prev + (part?.text?.replaceAll("\n", "<br>") || "")
-        );
-      }
+      const response = await openai.chat.completions.create({
+        messages: [
+          { role: "system", content: "You are so helpful Nator." },
+          { role: "user", content: question },
+        ],
+        model: "gpt-4o",
+        temperature: 1,
+        max_tokens: 4096,
+        top_p: 1,
+      });
+
+      setAnswer(response.choices[0].message.content || "No response.");
     } catch (error) {
-      console.error("Error fetching AI response:", error);
-      setAnswer("An error occurred. Please try again.");
+      console.error(error);
+      setAnswer("come again pls Nator Ai");
     }
   };
 
-  const date = new Date();
   return (
-    <section className="pt-8 max-w-[94%] md:max-w-[80%] mx-auto">
+    <section className="pt-8">
       <div className="intelligence">
-        <div className="relative py-6 px-2 bg-zinc-900 w-full h-96 rounded-sm border border-gray-500">
-          <div className="overflow-auto max-h-80 p-2">
-            <p
-              className="break-words text-zinc-400"
-              dangerouslySetInnerHTML={{ __html: answer }}
-            />
+        <div className="relative px-2 bg-zinc-900 w-full h-90 rounded-sm border border-gray-500">
+          <div className="overflow-auto max-h-90 p-2 py-6">
+            <p className="break-words text-zinc-400">
+              {answer || "Ask a question!"}
+            </p>
           </div>
           <div className="text-zinc-400 absolute bottom-2 flex space-x-3">
-            <p className="text-sm hidden sm:flex">{date.toTimeString()}</p>
+            <p className="text-sm hidden sm:flex">
+              {new Date().toTimeString()}
+            </p>
             <div className="flex space-x-2 items-center">
               <IoTimeOutline />
-              <p className="text-sm">2 seconds ago</p>
+              <p className="text-sm">Updated now</p>
             </div>
           </div>
         </div>
       </div>
+
       <form
         onSubmit={knowledgeSearch}
         className="mt-8 flex flex-col rounded-sm"
       >
         <input
           type="search"
-          className="px-4 py-2 pb-6 rounded-md appearance-none bg-zinc-900"
-          placeholder="What would you love to know!"
+          className="px-4 py-2 pb-6 rounded-md appearance-none bg-zinc-900 text-white"
+          placeholder="Ask OpenAI anything..."
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
         <div className="flex justify-end">
-          <button className="flex space-x-2 items-center text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-700 duration-300 transition-all">
+          <button
+            type="submit"
+            className="flex space-x-2 items-center text-white font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-700 duration-300 transition-all"
+          >
             <IoSearchSharp />
-            <span className="block">Search</span>
+            <span>Search</span>
           </button>
         </div>
       </form>
@@ -84,4 +97,4 @@ const KnowledgeComponents = () => {
   );
 };
 
-export default KnowledgeComponents;
+export default Knowledge;
