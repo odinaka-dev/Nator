@@ -58,14 +58,14 @@ const Signup = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="outline-none text-[14px] p-2 w-80 rounded-lg cursor-pointer bg-zinc-900"
+              className="outline-none text-[14px] p-2 w-70 sm:w-80 rounded-lg cursor-pointer bg-zinc-900"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="outline-none text-[14px] p-2 w-80 rounded-lg cursor-pointer bg-zinc-900"
+              className="outline-none text-[14px] p-2 w-70 sm:w-80 rounded-lg cursor-pointer bg-zinc-900"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -90,7 +90,7 @@ const Signup = () => {
           </form>
         </div>
       </div>
-      <div className="w-150 relative z-[10]">
+      <div className="w-150 relative z-[10] hidden md:flex">
         <img src={Image7} alt="" className="w-full" />
       </div>
     </section>
