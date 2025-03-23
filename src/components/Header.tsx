@@ -1,31 +1,19 @@
 import { Link, useLocation } from "react-router";
 import { FaRainbow } from "react-icons/fa";
 import { LuSquareMenu } from "react-icons/lu";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
-  // the links
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const links = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Chat Nator",
-      href: "/translate",
-    },
-    {
-      label: "Translate",
-      href: "/options",
-    },
-    {
-      label: "Login",
-      href: "/login",
-    },
-    {
-      label: "Sign Up",
-      href: "/signup",
-    },
+    { label: "Home", href: "/" },
+    { label: "Chat Nator", href: "/translate" },
+    { label: "Translate", href: "/options" },
+    { label: "Login", href: "/login" },
+    { label: "Sign Up", href: "/signup" },
   ];
 
   return (
@@ -34,7 +22,7 @@ const Header = () => {
         <div className="logo text-white">
           <Link
             to={"/"}
-            className="text-[#00FCDB] text-2xl md:text-3xl flex gap-2  items-center"
+            className="text-[#00FCDB] text-2xl md:text-3xl flex gap-2 items-center"
           >
             <FaRainbow /> <span className="text-white">Nator</span>
           </Link>
@@ -43,22 +31,54 @@ const Header = () => {
           <ul className="hidden md:flex space-x-6 items-center">
             {links.map((link) => (
               <li
+                key={link.href}
                 className={`${
                   link.href === location.pathname
                     ? "text-[#00FCDB]"
                     : "text-white"
                 } cursor-pointer hover:text-[#00FCDB] transition-colors duration-300`}
-                key={link.href}
               >
                 <Link to={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
-          <div className="flex md:hidden text-2xl cursor-pointer hover:text-[#00FCDB]">
+
+          {/* Mobile Menu Button */}
+          <div
+            className="flex md:hidden text-2xl cursor-pointer hover:text-[#00FCDB]"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <LuSquareMenu />
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden flex flex-col items-center space-y-4 bg-[#0d0d0d] py-4"
+          >
+            {links.map((link) => (
+              <li
+                key={link.href}
+                className={`${
+                  link.href === location.pathname
+                    ? "text-[#00FCDB]"
+                    : "text-white"
+                } cursor-pointer hover:text-[#00FCDB] transition-colors duration-300`}
+                onClick={() => setMenuOpen(false)}
+              >
+                <Link to={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
