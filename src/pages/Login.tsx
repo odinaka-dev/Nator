@@ -34,7 +34,7 @@ const login = () => {
       }
 
       alert("login Successfully");
-      navigate("/");
+      navigate("/options");
     } catch (error) {
       console.error(error);
     }
