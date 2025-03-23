@@ -65,10 +65,10 @@ const BannerComponent = () => {
         </div>
         <div className="text-emerald-400 text-5xl font-normal">
           <TiCancel className="animate-spin absolute top-30" />
-          <TiCancel className="animate-spin absolute top-20 left-[90%] xl:left-300" />
+          <TiCancel className="animate-spin absolute top-20 left-[80%] xl:left-300" />
           <BiMinusCircle className="animate-spin absolute top-80 left-[10%] xl:left-50" />
           <CgAddR className="animate-spin absolute top-60 left-[80%] xl:left-250" />
-          <BiMinusCircle className="animate-spin absolute top-100 left-[90%] xl:left-290" />
+          <BiMinusCircle className="animate-spin absolute top-100 left-[80%] xl:left-290" />
         </div>
       </div>
     </section>
