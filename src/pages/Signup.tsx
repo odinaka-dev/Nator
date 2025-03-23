@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image7 from "../assets/sign.avif";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -40,7 +40,7 @@ const Signup = () => {
   };
 
   return (
-    <section className="bg-black h-screen flex space-x-0  justify-center items-center">
+    <section className="bg-black h-screen flex sm:space-x-0  justify-center items-center">
       <div className="bg-[#0d0d0d] py-6 px-4 rounded-sm">
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator
@@ -87,10 +87,18 @@ const Signup = () => {
               onSubmit={CreateNewUsers}
               className="text-white bg-blue-800 hover:bg-blue-900 transition-colors duration-300 p-2 rounded-lg cursor-pointer"
             />
+            <Link to={"/login"}>
+              <p>
+                Already have an account,{" "}
+                <span className="text-[#0fdbcb] text-sm font-medium">
+                  Login
+                </span>
+              </p>
+            </Link>
           </form>
         </div>
       </div>
-      <div className="w-150 relative z-[10] hidden md:flex">
+      <div className="sm:w-150 relative z-[10] hidden md:flex">
         <img src={Image7} alt="" className="w-full" />
       </div>
     </section>

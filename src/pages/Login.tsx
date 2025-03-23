@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import Image7 from "../assets/log.avif";
 import { useState } from "react";
+import { Link } from "react-router";
 
 const login = () => {
   const navigate = useNavigate();
@@ -75,10 +76,18 @@ const login = () => {
               onSubmit={LoginUsers}
               className="text-white bg-blue-800 hover:bg-blue-900 transition-colors duration-300 p-2 rounded-lg cursor-pointer"
             />
+            <Link to={"/signup"}>
+              <p>
+                Don't have an account,{" "}
+                <span className="text-[#0fdbcb] text-sm font-medium">
+                  Create an account
+                </span>
+              </p>
+            </Link>
           </form>
         </div>
       </div>
-      <div className="relative z-[1] hidden md:flex">
+      <div className="sm:w-150 relative z-[10] hidden md:flex">
         <img src={Image7} alt="" className="w-full" />
       </div>
     </section>
