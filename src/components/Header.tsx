@@ -61,7 +61,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden flex flex-col items-center space-y-4 bg-[#0d0d0d] py-4"
+            className="absolute md:hidden flex flex-col items-center space-y-4 bg-[#0d0d0d] py-4 z-10 w-full"
           >
             {links.map((link) => (
               <li
