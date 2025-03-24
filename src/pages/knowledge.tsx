@@ -14,7 +14,6 @@ const KnowledgeComponents = () => {
         "https://openrouter.ai/api/v1/chat/completions",
         {
           method: "POST",
-          // mode: "no-cors",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
