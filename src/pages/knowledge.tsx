@@ -10,25 +10,22 @@ const KnowledgeComponents = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://models.inference.ai.azure.com", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_AZURE_API_KEY}`,
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: "" },
-            { role: "user", content: question },
-          ],
-          model: "gpt-4o",
-          temperature: 1,
-          max_tokens: 4096,
-          top_p: 1,
-        }),
-      });
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          // mode: "no-cors",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_AZURE_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "deepseek/deepseek-chat-v3-0324:free",
+            messages: [{ role: "user", content: question }],
+          }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -44,7 +41,7 @@ const KnowledgeComponents = () => {
 
   const date = new Date();
   return (
-    <section className="pt-8">
+    <section className="pt-8 max-w-[90%] mx-auto">
       <div className="intelligence">
         <div className="relative py-6 px-2 bg-zinc-900 w-full h-90 rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-80 p-2">
@@ -53,7 +50,7 @@ const KnowledgeComponents = () => {
             </p>
           </div>
           <div className="text-zinc-400 absolute bottom-2 flex space-x-3">
-            <p className="text-sm">{date.toTimeString()}</p>
+            <p className="text-sm hidden md:flex">{date.toTimeString()}</p>
             <div className="flex space-x-2 items-center">
               <IoTimeOutline />
               <p className="text-sm"> 2 seconds ago</p>
