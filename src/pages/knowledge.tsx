@@ -17,7 +17,7 @@ const KnowledgeComponents = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${import.meta.env.VITE_AZURE_API_KEY}`,
           },
           body: JSON.stringify({
             model: "deepseek/deepseek-chat-v3-0324:free",
