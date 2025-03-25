@@ -37,7 +37,7 @@ const login = () => {
       const data = await response.json();
       alert("login Successfully");
       login(data.token);
-      navigate("/options");
+      navigate("/translate");
     } catch (error) {
       console.error(error);
     }

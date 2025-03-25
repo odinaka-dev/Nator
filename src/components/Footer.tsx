@@ -56,6 +56,7 @@ const Footer = () => {
           <ul>
             {footerLinks.map((link) => (
               <li
+                key={link.label}
                 className={`${
                   link.href === location.pathname
                     ? "text-[#00FCDB]"

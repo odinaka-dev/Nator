@@ -3,12 +3,17 @@ import { FaRainbow } from "react-icons/fa";
 import { LuSquareMenu } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useAuth } from "../Context/AuthContext"; // Import useAuth hook
+import { useAuth } from "../Context/AuthContext";
 
 const Header = () => {
   const location = useLocation();
-  const { loggedIn, logout } = useAuth(); // Get authentication state and logout function
+  const { loggedIn, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // function for an alert that says user not yet logged in
+  const NotYetLoggedIn = () => {
+    alert("Login to access this page...");
+  };
 
   const links = [{ label: "Home", href: "/" }];
 
@@ -40,12 +45,12 @@ const Header = () => {
             ))}
             {!loggedIn ? (
               <>
-                <li>
+                <li onClick={NotYetLoggedIn}>
                   <Link to="/login" className="text-white hover:text-[#00FCDB]">
                     Chat Nator
                   </Link>
                 </li>
-                <li>
+                <li onClick={NotYetLoggedIn}>
                   <Link to="/login" className="text-white hover:text-[#00FCDB]">
                     Translate
                   </Link>
@@ -131,7 +136,7 @@ const Header = () => {
             {/* Mobile Login/Logout */}
             {!loggedIn ? (
               <>
-                <li>
+                <li onClick={NotYetLoggedIn}>
                   <Link
                     to="/login"
                     className="text-white hover:text-[#00FCDB]"
@@ -140,7 +145,7 @@ const Header = () => {
                     Chat Nator
                   </Link>
                 </li>
-                <li>
+                <li onClick={NotYetLoggedIn}>
                   <Link
                     to="/login"
                     className="text-white hover:text-[#00FCDB]"

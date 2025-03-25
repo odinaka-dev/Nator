@@ -239,7 +239,10 @@ const PricingPlans = () => {
       </div>
       <div className="plans flex flex-col md:flex-row justify-center gap-8 md:space-x-8">
         {Pricing.map((pricings) => (
-          <div className="text-center bg-zinc-900 p-6 rounded-sm border-2 border-[#3500FC]">
+          <div
+            key={pricings.Price}
+            className="text-center bg-zinc-900 p-6 rounded-sm border-2 border-[#3500FC]"
+          >
             <h3 className="text-2xl font-semibold text-[#00fcdb] mb-2">
               {pricings.planTag}
             </h3>
@@ -367,7 +370,10 @@ const Testimonials = () => {
             {userTestimonials
               .slice(index * itemsPerPage, (index + 1) * itemsPerPage)
               .map((clientels) => (
-                <div className="clients bg-zinc-900 py-8 rounded-sm">
+                <div
+                  key={clientels.name}
+                  className="clients bg-zinc-900 py-8 rounded-sm"
+                >
                   <div className="client_info flex space-x-3 items-center justify-center">
                     <div className="client_img">
                       <img
