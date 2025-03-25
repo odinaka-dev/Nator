@@ -3,11 +3,14 @@ import Image7 from "../assets/log.avif";
 import { useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../Context/AuthContext";
+import { MdCheckCircle, MdOutlineError } from "react-icons/md";
 
 const login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [errorText, setErrorText] = useState("");
   const { login } = useAuth();
 
   const LoginUsers = async (e: { preventDefault: () => void }) => {
@@ -30,14 +33,27 @@ const login = () => {
         }
       );
 
-      if (!response.ok) {
-        console.log("invalid credentials");
-        return;
-      }
+      const handleLog = () => {
+        setisLoggedIn(true);
+        navigate("/load");
+        setTimeout(() => {
+          navigate("/translate");
+        }, 3000);
+      };
+
       const data = await response.json();
-      alert("login Successfully");
-      login(data.token);
-      navigate("/translate");
+      if (!response.ok) {
+        setErrorText("incorrect email or password");
+        setisLoggedIn(false);
+        return;
+      } else {
+        login(data.token);
+        // setTimeout(() => {
+        //   setisLoggedIn(true);
+        // }, 5000);
+        // navigate("/translate");
+        handleLog();
+      }
     } catch (error) {
       console.error(error);
     }
@@ -46,9 +62,15 @@ const login = () => {
   return (
     <section className="h-screen flex space-x-0 justify-center items-center py-8 bg-black">
       <div className="bg-[#0d0d0d] py-6 px-4 rounded-sm">
-        <div className="loggedInfo">
-          <p></p>
-        </div>
+        {errorText && (
+          <div
+            className={`loggedInfo flex space-x-2 items-center  bg-zinc-900 p-2 rounded-sm
+              ${isLoggedIn ? "text-green-400" : "text-red-400"}`}
+          >
+            {isLoggedIn ? <MdCheckCircle /> : <MdOutlineError />}
+            <p className="">{errorText}</p>
+          </div>
+        )}
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator
         </h1>
@@ -99,5 +121,16 @@ const login = () => {
     </section>
   );
 };
+
+// const ErrorCheck = () => {
+//   return (
+//     <section className="">
+//       <div className="loggedInfo flex space-x-2 items-center text-red-400 bg-zinc-900 p-2 rounded-sm">
+//         <MdOutlineError />
+//         <p className=""></p>
+//       </div>
+//     </section>
+//   );
+// };
 
 export default login;
