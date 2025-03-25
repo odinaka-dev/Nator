@@ -42,8 +42,6 @@ const Header = () => {
                 <Link to={link.href}>{link.label}</Link>
               </li>
             ))}
-
-            {/* Conditional Login/Logout Buttons */}
             {!loggedIn ? (
               <>
                 <li>
