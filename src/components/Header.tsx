@@ -10,11 +10,7 @@ const Header = () => {
   const { loggedIn, logout } = useAuth(); // Get authentication state and logout function
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const links = [
-    { label: "Home", href: "/" },
-    { label: "Chat Nator", href: "/translate" },
-    { label: "Translate", href: "/options" },
-  ];
+  const links = [{ label: "Home", href: "/" }];
 
   return (
     <nav className="bg-[#0d0d0d]">
@@ -46,6 +42,16 @@ const Header = () => {
               <>
                 <li>
                   <Link to="/login" className="text-white hover:text-[#00FCDB]">
+                    Chat Nator
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="text-white hover:text-[#00FCDB]">
+                    Translate
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="text-white hover:text-[#00FCDB]">
                     Login
                   </Link>
                 </li>
@@ -59,14 +65,32 @@ const Header = () => {
                 </li>
               </>
             ) : (
-              <li>
-                <button
-                  onClick={logout}
-                  className="text-white hover:text-[#00FCDB] cursor-pointer"
-                >
-                  Logout
-                </button>
-              </li>
+              <>
+                <li>
+                  <Link
+                    to="/translate"
+                    className="text-white hover:text-[#00FCDB]"
+                  >
+                    Chat Nator
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/options"
+                    className="text-white hover:text-[#00FCDB]"
+                  >
+                    Translate
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={logout}
+                    className="text-white hover:text-[#00FCDB] cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
             )}
           </ul>
 
@@ -113,6 +137,24 @@ const Header = () => {
                     className="text-white hover:text-[#00FCDB]"
                     onClick={() => setMenuOpen(false)}
                   >
+                    Chat Nator
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/login"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Translate
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/login"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
                     Login
                   </Link>
                 </li>
@@ -127,17 +169,37 @@ const Header = () => {
                 </li>
               </>
             ) : (
-              <li>
-                <button
-                  onClick={() => {
-                    logout();
-                    setMenuOpen(false);
-                  }}
-                  className="text-white hover:text-[#00FCDB] cursor-pointer"
-                >
-                  Logout
-                </button>
-              </li>
+              <>
+                <li>
+                  <Link
+                    to="/translate"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    chat Nator
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/options"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Translate
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-[#00FCDB] cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
             )}
           </motion.ul>
         )}
