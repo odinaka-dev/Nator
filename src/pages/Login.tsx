@@ -46,6 +46,9 @@ const login = () => {
   return (
     <section className="h-screen flex space-x-0 justify-center items-center py-8 bg-black">
       <div className="bg-[#0d0d0d] py-6 px-4 rounded-sm">
+        <div className="loggedInfo">
+          <p></p>
+        </div>
         <h1 className="text-[#00fcdb] uppercase text-sm  text-center my-2">
           Nator
         </h1>

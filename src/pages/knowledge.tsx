@@ -53,7 +53,7 @@ const KnowledgeComponents = () => {
   return (
     <section className="pt-8 max-w-[90%] mx-auto">
       <div className="intelligence">
-        <div className="relative py-6 px-2 bg-zinc-900 w-full h-100 rounded-sm border border-gray-500">
+        <div className="relative py-6 px-2 bg-zinc-900 w-full h-110 md:h-100 rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-[100%] p-2">
             <div className="break-words text-zinc-400">
               {answer ? (

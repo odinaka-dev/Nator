@@ -88,12 +88,13 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <button
+                  <Link
+                    to={"/"}
                     onClick={logout}
                     className="text-white hover:text-[#00FCDB] cursor-pointer"
                   >
                     Logout
-                  </button>
+                  </Link>
                 </li>
               </>
             )}
@@ -194,7 +195,8 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <button
+                  <Link
+                    to={"/"}
                     onClick={() => {
                       logout();
                       setMenuOpen(false);
@@ -202,7 +204,7 @@ const Header = () => {
                     className="text-white hover:text-[#00FCDB] cursor-pointer"
                   >
                     Logout
-                  </button>
+                  </Link>
                 </li>
               </>
             )}
