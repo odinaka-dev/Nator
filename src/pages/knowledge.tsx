@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoSearchSharp } from "react-icons/io5";
 import { LuLoaderCircle } from "react-icons/lu";
+import ReactMarkdown from "react-markdown";
 
 const KnowledgeComponents = () => {
   const [question, setQuestion] = useState("");
@@ -54,9 +55,13 @@ const KnowledgeComponents = () => {
       <div className="intelligence">
         <div className="relative py-6 px-2 bg-zinc-900 w-full h-[80vh] rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-[100%] p-2">
-            <p className="break-words text-zinc-400">
-              {answer || "Ask me anything"}
-            </p>
+            <div className="break-words text-zinc-400">
+              {answer ? (
+                <ReactMarkdown>{answer}</ReactMarkdown>
+              ) : (
+                "Ask me anything"
+              )}
+            </div>
           </div>
           <div className="text-zinc-400 absolute bottom-2 flex items-center space-x-3">
             <p className="text-sm hidden md:flex">{date.toTimeString()}</p>
