@@ -1,4 +1,4 @@
-import { data, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import Image7 from "../assets/log.avif";
 import { useState } from "react";
 import { Link } from "react-router";
