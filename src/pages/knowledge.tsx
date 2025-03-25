@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoSearchSharp } from "react-icons/io5";
+import { LuLoaderCircle } from "react-icons/lu";
 
 const KnowledgeComponents = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSearch = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  };
 
   const knowledgeSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -42,15 +52,15 @@ const KnowledgeComponents = () => {
   return (
     <section className="pt-8 max-w-[90%] mx-auto">
       <div className="intelligence">
-        <div className="relative py-6 px-2 bg-zinc-900 w-full h-90 rounded-sm border border-gray-500">
-          <div className="overflow-auto max-h-80 p-2">
+        <div className="relative py-6 px-2 bg-zinc-900 w-full h-[80vh] rounded-sm border border-gray-500">
+          <div className="overflow-auto max-h-[100%] p-2">
             <p className="break-words text-zinc-400">
-              {answer || "Ask me anything!"}
+              {answer || "Ask me anything"}
             </p>
           </div>
-          <div className="text-zinc-400 absolute bottom-2 flex space-x-3">
+          <div className="text-zinc-400 absolute bottom-2 flex items-center space-x-3">
             <p className="text-sm hidden md:flex">{date.toTimeString()}</p>
-            <div className="flex space-x-2 items-center">
+            <div className="flex space-x-2 items-center mt-4">
               <IoTimeOutline />
               <p className="text-sm"> 2 seconds ago</p>
             </div>
@@ -70,14 +80,35 @@ const KnowledgeComponents = () => {
         />
         <div className="flex justify-end">
           <button
+            onClick={handleSearch}
+            // disabled={isLoading}
             type="submit"
-            className="flex space-x-2 items-center text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-700 duration-300 transition-all"
+            className="text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-900 duration-300 transition-all"
           >
-            <IoSearchSharp />
-            <span className="block">Search</span>
+            {isLoading ? (
+              <div className="flex space-x-2 items-center">
+                <LoadComponents />
+                <span className="block">Searching</span>
+              </div>
+            ) : (
+              <div className="flex space-x-2 items-center">
+                <IoSearchSharp />
+                <span className="block">Search</span>
+              </div>
+            )}
           </button>
         </div>
       </form>
+    </section>
+  );
+};
+
+const LoadComponents = () => {
+  return (
+    <section className="knowledge_load">
+      <div className="flex justify-center items-center text-xl">
+        <LuLoaderCircle className="animate-spin" />
+      </div>
     </section>
   );
 };

@@ -67,11 +67,8 @@ const ChooseComponents = () => {
     <section className="">
       <div className="select_options grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-16">
         {Options.map((multi) => (
-          <Link to={`/${multi.href}`}>
-            <div
-              className="intelligence flex gap-2 items-center hover:bg-[#0d0d0d] p-2 rounded-sm duration-300 transition-colors cursor-pointer"
-              key={multi.label}
-            >
+          <Link to={`/${multi.href}`} key={multi.label}>
+            <div className="intelligence flex gap-2 items-center hover:bg-[#0d0d0d] p-2 rounded-sm duration-300 transition-colors cursor-pointer">
               <div className="img">
                 <img src={multi.imageLabel} alt="" className="w-12" />
               </div>
