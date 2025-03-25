@@ -1,12 +1,14 @@
-import { useNavigate } from "react-router";
+import { data, useNavigate } from "react-router";
 import Image7 from "../assets/log.avif";
 import { useState } from "react";
 import { Link } from "react-router";
+import { useAuth } from "../Context/AuthContext";
 
 const login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const LoginUsers = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -32,8 +34,9 @@ const login = () => {
         console.log("invalid credentials");
         return;
       }
-
+      const data = await response.json();
       alert("login Successfully");
+      login(data.token);
       navigate("/options");
     } catch (error) {
       console.error(error);

@@ -3,17 +3,17 @@ import { FaRainbow } from "react-icons/fa";
 import { LuSquareMenu } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useAuth } from "../Context/AuthContext"; // Import useAuth hook
 
 const Header = () => {
   const location = useLocation();
+  const { loggedIn, logout } = useAuth(); // Get authentication state and logout function
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
     { label: "Home", href: "/" },
     { label: "Chat Nator", href: "/translate" },
     { label: "Translate", href: "/options" },
-    { label: "Login", href: "/login" },
-    { label: "Sign Up", href: "/signup" },
   ];
 
   return (
@@ -21,12 +21,13 @@ const Header = () => {
       <div className="navbar py-4 flex justify-between md:justify-start md:space-x-20 items-center">
         <div className="logo text-white">
           <Link
-            to={"/"}
+            to="/"
             className="text-[#00FCDB] text-2xl md:text-3xl flex gap-2 items-center"
           >
             <FaRainbow /> <span className="text-white">Nator</span>
           </Link>
         </div>
+
         <div className="links_user flex items-center space-x-8">
           <ul className="hidden md:flex space-x-6 items-center">
             {links.map((link) => (
@@ -41,6 +42,34 @@ const Header = () => {
                 <Link to={link.href}>{link.label}</Link>
               </li>
             ))}
+
+            {/* Conditional Login/Logout Buttons */}
+            {!loggedIn ? (
+              <>
+                <li>
+                  <Link to="/login" className="text-white hover:text-[#00FCDB]">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="text-white hover:text-[#00FCDB]"
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={logout}
+                  className="text-white hover:text-[#00FCDB] cursor-pointer"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
 
           {/* Mobile Menu Button */}
@@ -76,6 +105,42 @@ const Header = () => {
                 <Link to={link.href}>{link.label}</Link>
               </li>
             ))}
+
+            {/* Mobile Login/Logout */}
+            {!loggedIn ? (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="text-white hover:text-[#00FCDB]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={() => {
+                    logout();
+                    setMenuOpen(false);
+                  }}
+                  className="text-white hover:text-[#00FCDB] cursor-pointer"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </motion.ul>
         )}
       </AnimatePresence>
