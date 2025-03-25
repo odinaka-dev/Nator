@@ -53,7 +53,7 @@ const KnowledgeComponents = () => {
   return (
     <section className="pt-8 max-w-[90%] mx-auto">
       <div className="intelligence">
-        <div className="relative py-6 px-2 bg-zinc-900 w-full h-[80vh] rounded-sm border border-gray-500">
+        <div className="relative py-6 px-2 bg-zinc-900 w-full h-100 rounded-sm border border-gray-500">
           <div className="overflow-auto max-h-[100%] p-2">
             <div className="break-words text-zinc-400">
               {answer ? (
@@ -63,9 +63,9 @@ const KnowledgeComponents = () => {
               )}
             </div>
           </div>
-          <div className="text-zinc-400 absolute bottom-2 flex items-center space-x-3">
+          <div className="text-zinc-400 absolute bottom-2 flex items-center space-x-3 pt-8">
             <p className="text-sm hidden md:flex">{date.toTimeString()}</p>
-            <div className="flex space-x-2 items-center mt-4">
+            <div className="flex space-x-2 items-center">
               <IoTimeOutline />
               <p className="text-sm"> 2 seconds ago</p>
             </div>
