@@ -116,7 +116,7 @@ const KnowledgeComponents = () => {
         <div className="">
           <input
             type="search"
-            className="px-4 py-4 rounded-md appearance-none bg-zinc-900 w-72 sm:w-100 md:w-150 lg:w-200 xl:250"
+            className="px-4 py-4 rounded-md appearance-none bg-zinc-900 w-70 sm:w-100 md:w-150 lg:w-200 xl:250"
             placeholder="Ask your question..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
