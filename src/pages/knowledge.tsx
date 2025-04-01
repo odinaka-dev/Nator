@@ -131,7 +131,7 @@ const KnowledgeComponents = () => {
             {isLoading ? (
               <div className="flex space-x-2 items-center">
                 <LuLoaderCircle className="animate-spin" />
-                <span className="block">Searching</span>
+                <span className="hidden sm:block">Searching</span>
               </div>
             ) : (
               <div className="flex space-x-2 items-center">
