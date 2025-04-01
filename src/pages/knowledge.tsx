@@ -111,20 +111,22 @@ const KnowledgeComponents = () => {
       </div>
       <form
         onSubmit={knowledgeSearch}
-        className="mt-8 flex flex-col rounded-sm"
+        className="mt-8 flex items-center justify-center gap-2 rounded-sm w-full"
       >
-        <input
-          type="search"
-          className="px-4 py-2 pb-6 rounded-md appearance-none bg-zinc-900"
-          placeholder="Ask your question..."
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-        <div className="flex justify-end">
+        <div className="">
+          <input
+            type="search"
+            className="px-4 py-4 rounded-md appearance-none bg-zinc-900 w-72 sm:w-100 md:w-150 lg:w-200 xl:250"
+            placeholder="Ask your question..."
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+          />
+        </div>
+        <div className="flex justify-center items-center">
           <button
             disabled={isLoading || !question.trim()}
             type="submit"
-            className="text-zinc-200 font-normal text-lg bg-emerald-400 px-8 py-2 rounded-sm mt-4 cursor-pointer hover:bg-emerald-900 duration-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="text-zinc-200 font-normal text-lg bg-emerald-400 px-4 sm:px-8 py-4 rounded-sm cursor-pointer hover:bg-emerald-900 duration-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
               <div className="flex space-x-2 items-center">
@@ -134,7 +136,7 @@ const KnowledgeComponents = () => {
             ) : (
               <div className="flex space-x-2 items-center">
                 <IoSearchSharp />
-                <span className="block">Search</span>
+                <span className="hidden sm:block">Search</span>
               </div>
             )}
           </button>
